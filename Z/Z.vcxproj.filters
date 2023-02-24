@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Events">
+      <UniqueIdentifier>{3A8963B1-262B-8E87-0FE6-A1DBFB2615D8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImGuiLayer">
+      <UniqueIdentifier>{FD5ED1A4-E916-13F2-521E-EC4D3EF5ADE2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layers">
+      <UniqueIdentifier>{157446C0-0116-7196-EAD0-84EAD611F8E6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platforms">
+      <UniqueIdentifier>{DDACA145-4917-56BC-9255-0762FEFE3311}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platforms\OpenGL">
+      <UniqueIdentifier>{719BB998-5D94-D8EA-86C6-BD6F721EB8F6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platforms\Windows">
+      <UniqueIdentifier>{17E40808-83FA-069E-CC71-92BF38C7D725}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="res\Application.h" />
+    <ClInclude Include="res\Core.h" />
+    <ClInclude Include="res\EntryPoint.h" />
+    <ClInclude Include="res\Events\ApplicationEvent.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="res\Events\Event.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="res\Events\KeyEvent.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="res\Events\MouseEvent.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="res\ImGuiLayer\ImGuiLayer.h">
+      <Filter>ImGuiLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="res\Layers\Layer.h">
+      <Filter>Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="res\Layers\LayerStack.h">
+      <Filter>Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="res\Log.h" />
+    <ClInclude Include="res\Platforms\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platforms\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="res\Platforms\OpenGL\imgui_impl_opengl3_loader.h">
+      <Filter>Platforms\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="res\Platforms\Windows\WindowsWindow.h">
+      <Filter>Platforms\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="res\Window.h" />
+    <ClInclude Include="res\Z.h" />
+    <ClInclude Include="res\zpch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="res\Application.cpp" />
+    <ClCompile Include="res\ImGuiLayer\ImGuiLayer.cpp">
+      <Filter>ImGuiLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="res\Layers\Layer.cpp">
+      <Filter>Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="res\Layers\LayerStack.cpp">
+      <Filter>Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="res\Log.cpp" />
+    <ClCompile Include="res\Platforms\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platforms\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="res\Platforms\Windows\WindowsWindow.cpp">
+      <Filter>Platforms\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="res\zpch.cpp" />
+  </ItemGroup>
+</Project>

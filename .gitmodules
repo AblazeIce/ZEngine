@@ -1,0 +1,15 @@
+[submodule "Z/vendor/spdlog"]
+	path = Z/vendor/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "Z/vendor/GLFW"]
+	path = Z/vendor/GLFW
+	url = https://github.com/TheCherno/glfw
+[submodule "Z/vendor/GLFW1"]
+	path = Z/vendor/GLFW1
+	url = https://github.com/glfw/glfw
+[submodule "Z/vendor/imgui"]
+	path = Z/vendor/imgui
+	url = https://github.com/thecherno/imgui
+[submodule "Z/vendor/imgui1"]
+	path = Z/vendor/imgui1
+	url = https://github.com/ocornut/imgui
