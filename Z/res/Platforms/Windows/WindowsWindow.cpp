@@ -69,58 +69,58 @@ namespace Z
 		Z_CORE_ASSERT(status, "Failed to initialize Glad!");
 
 		//设置窗口关联的数据结构指针(仅仅是储存数据)
-		glfwSetWindowUserPointer(m_Window,&m_Data);
+		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
 #pragma region 设置GlFW回调
 		//当m_Window窗口大小变化时，后面回调函数将会触发
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
-			{
-				//获取窗口关联的用户数据指针
-				WindowData& data= *(WindowData*)glfwGetWindowUserPointer(window);
-				data.Width = width;
-				data.Height = height;
-				
-				WindowResizeEvent event(width, height);
+		{
+			//获取窗口关联的用户数据指针
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			data.Width = width;
+			data.Height = height;
 
-				//调用该窗口的事件回调函数(该窗口的事件回调函数已经在构造函数中指定为Application::OnEvent())
-				data.EventCallback(event);
-			}
+			WindowResizeEvent event(width, height);
+
+			//调用该窗口的事件回调函数(该窗口的事件回调函数已经在构造函数中指定为Application::OnEvent())
+			data.EventCallback(event);
+		}
 		);
 
 		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
-			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-				WindowCloseEvent event;
-				data.EventCallback(event);
-			});
+		{
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			WindowCloseEvent event;
+			data.EventCallback(event);
+		});
 
 		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods) {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			switch (action)
 			{
-				case GLFW_PRESS:
-				{
-					KeyPressedEvent event(key, 0);
-					data.EventCallback(event);
-					break;
-				}
-				case GLFW_RELEASE:
-				{
-					KeyReleasedEvent event(key);
-					data.EventCallback(event);
-					break;
-				}
-				case GLFW_REPEAT:
-				{
-					KeyPressedEvent event(key, 1);
-					data.EventCallback(event);
-					break;
-				}
-				default:
-					break;
+			case GLFW_PRESS:
+			{
+				KeyPressedEvent event(key, 0);
+				data.EventCallback(event);
+				break;
 			}
-			});
+			case GLFW_RELEASE:
+			{
+				KeyReleasedEvent event(key);
+				data.EventCallback(event);
+				break;
+			}
+			case GLFW_REPEAT:
+			{
+				KeyPressedEvent event(key, 1);
+				data.EventCallback(event);
+				break;
+			}
+			default:
+				break;
+			}
+		});
 		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -129,42 +129,41 @@ namespace Z
 			data.EventCallback(event);
 		});
 		glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods)
+		{
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+
+			switch (action)
 			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-				
-				switch (action)
-				{
-					case GLFW_PRESS:
-					{
-						MouseButtonPressedEvent event(button);
-						data.EventCallback(event);
-						break;
-					}
-					case GLFW_RELEASE:
-					{
-						MouseButtonReleasedEvent event(button);
-						data.EventCallback(event);
-						break;
-					}
-					default:
-						break;
-				}
-				
-			});
+			case GLFW_PRESS:
+			{
+				MouseButtonPressedEvent event(button);
+				data.EventCallback(event);
+				break;
+			}
+			case GLFW_RELEASE:
+			{
+				MouseButtonReleasedEvent event(button);
+				data.EventCallback(event);
+				break;
+			}
+			default:
+				break;
+			}
+		});
 
 		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xoffset, double yoffset)
-			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-				MouseScrolledEvent event((float)xoffset, (float)yoffset);
-				data.EventCallback(event);
-			});
+		{
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			MouseScrolledEvent event((float)xoffset, (float)yoffset);
+			data.EventCallback(event);
+		});
 
 		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xpos, double ypos)
-			{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-				MouseMovedEvent event((float)xpos,(float)ypos);
-				data.EventCallback(event);
-			});
+		{
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			MouseMovedEvent event((float)xpos, (float)ypos);
+			data.EventCallback(event);
+		});
 
 #pragma endregion
 	}

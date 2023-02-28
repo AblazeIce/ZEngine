@@ -58,6 +58,10 @@
     <ClInclude Include="res\Window.h" />
     <ClInclude Include="res\Z.h" />
     <ClInclude Include="res\zpch.h" />
+    <ClInclude Include="res\Input.h" />
+    <ClInclude Include="res\Platforms\Windows\WindowsInput.h" />
+    <ClInclude Include="res\KeyCodes.h" />
+    <ClInclude Include="res\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="res\Application.cpp" />
@@ -78,5 +82,6 @@
       <Filter>Platforms\Windows</Filter>
     </ClCompile>
     <ClCompile Include="res\zpch.cpp" />
+    <ClCompile Include="res\Platforms\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

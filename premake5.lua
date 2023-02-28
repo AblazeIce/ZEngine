@@ -7,6 +7,7 @@ workspace "Z"
 		"Release",
 		"Dist"
 	}
+	startproject "Sandbox"
 
 outputdir="%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -21,10 +22,12 @@ include "Z/vendor/Glad"
 include "Z/vendor/imgui"
 
 
+
 project "Z"
 	location "Z"
 	kind "SharedLib" 
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}") 
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -55,7 +58,6 @@ project "Z"
 	}
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -67,28 +69,29 @@ project "Z"
 
 	
 	postbuildcommands{
-		("{COPY} %{cfg.buildtarget.relpath} ../bin/" ..outputdir.. "/Sandbox")
+		("{COPY} %{cfg.buildtarget.relpath} \"../bin/" ..outputdir.. "/Sandbox/\"")
 	}
 
 	filter "configurations:Debug"
 		defines "Z_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "Z_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "Z_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleAPP"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -110,7 +113,6 @@ project "Sandbox"
 	}
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -120,15 +122,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "Z_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "Z_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "Z_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"

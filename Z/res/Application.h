@@ -6,7 +6,6 @@
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
 
-
 namespace Z {
 	class Z_API Application
 	{
@@ -20,7 +19,7 @@ namespace Z {
 		void PushOverlay(Layer* overlay);
 
 		inline static Application& Get() { return *s_Instance; }
-		inline Window& GetWindow() { return *m_Window;}
+		inline Window& GetWindow() { return *m_Window; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 		std::unique_ptr<Window> m_Window;
@@ -31,5 +30,3 @@ namespace Z {
 	};
 	Application* CreateApplication();
 }
-
-

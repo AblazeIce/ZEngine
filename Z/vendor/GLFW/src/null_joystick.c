@@ -28,14 +28,13 @@
 
 #include "internal.h"
 
-
 //////////////////////////////////////////////////////////////////////////
 //////                       GLFW platform API                      //////
 //////////////////////////////////////////////////////////////////////////
 
 GLFWbool _glfwInitJoysticksNull(void)
 {
-    return GLFW_TRUE;
+	return GLFW_TRUE;
 }
 
 void _glfwTerminateJoysticksNull(void)
@@ -44,15 +43,14 @@ void _glfwTerminateJoysticksNull(void)
 
 GLFWbool _glfwPollJoystickNull(_GLFWjoystick* js, int mode)
 {
-    return GLFW_FALSE;
+	return GLFW_FALSE;
 }
 
 const char* _glfwGetMappingNameNull(void)
 {
-    return "";
+	return "";
 }
 
 void _glfwUpdateGamepadGUIDNull(char* guid)
 {
 }
-

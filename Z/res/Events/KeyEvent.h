@@ -10,19 +10,19 @@ namespace Z
 		inline int GetKeyCode() const { return m_KeyCode; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
-		/*virtual int GetCategoryFlags() const override {
-		return EventCategoryKeyboard |S EventCategoryInput;
-		}*/
+			/*virtual int GetCategoryFlags() const override {
+			return EventCategoryKeyboard |S EventCategoryInput;
+			}*/
 	protected:
 		KeyEvent(int keycode)
 			:m_KeyCode(keycode) {}
 		int m_KeyCode;
 	};
-	class Z_API KeyPressedEvent:public KeyEvent
+	class Z_API KeyPressedEvent :public KeyEvent
 	{
 	public:
 		KeyPressedEvent(int keycode, int repeatCount)
-			: KeyEvent(keycode), m_RepeatCount(repeatCount){}
+			: KeyEvent(keycode), m_RepeatCount(repeatCount) {}
 		inline int GetRepeatCount() const { return m_RepeatCount; }
 		std::string ToString() const override {
 			std::stringstream ss;
@@ -40,7 +40,7 @@ namespace Z
 	{
 	public:
 		KeyReleasedEvent(int keycode)
-			:KeyEvent(keycode){}
+			:KeyEvent(keycode) {}
 
 		std::string ToString() const override
 		{
@@ -54,13 +54,12 @@ namespace Z
 	{
 	public:
 		KeyTypedEvent(int keycode)
-			: KeyEvent(keycode){}
+			: KeyEvent(keycode) {}
 		std::string ToString() const override {
 			std::stringstream ss;
-			ss << "KeyTypedEvent:" << m_KeyCode ;
+			ss << "KeyTypedEvent:" << m_KeyCode;
 			return ss.str();
 		}
 		EVENT_CLASS_TYPE(KeyPressed)
 	};
-	
 }

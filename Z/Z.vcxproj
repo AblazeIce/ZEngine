@@ -84,8 +84,7 @@
       <AdditionalIncludeDirectories>vendor\spdlog\include;res;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -95,7 +94,7 @@
       <ImportLibrary>..\bin\Debug-windows-x86_64\Z\Z.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Z\Z.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Z\Z.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Z\Z.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Z\Z.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Z\Z.dll "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Z\Z.dll "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -110,8 +109,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -122,7 +120,7 @@
       <ImportLibrary>..\bin\Release-windows-x86_64\Z\Z.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release-windows-x86_64\Z\Z.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Z\Z.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Z\Z.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Release-windows-x86_64\Z\Z.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Z\Z.dll "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Z\Z.dll "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -137,8 +135,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -149,7 +146,7 @@
       <ImportLibrary>..\bin\Dist-windows-x86_64\Z\Z.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Dist-windows-x86_64\Z\Z.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\Z\Z.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\Z\Z.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Dist-windows-x86_64\Z\Z.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\Z\Z.dll "..\bin\Dist-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\Z\Z.dll "..\bin\Dist-windows-x86_64\Sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -161,15 +158,19 @@
     <ClInclude Include="res\Events\KeyEvent.h" />
     <ClInclude Include="res\Events\MouseEvent.h" />
     <ClInclude Include="res\ImGuiLayer\ImGuiLayer.h" />
+    <ClInclude Include="res\Input.h" />
+    <ClInclude Include="res\KeyCodes.h" />
     <ClInclude Include="res\Layers\Layer.h" />
     <ClInclude Include="res\Layers\LayerStack.h" />
     <ClInclude Include="res\Log.h" />
+    <ClInclude Include="res\MouseButtonCodes.h" />
     <ClInclude Include="res\Platforms\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="res\Platforms\OpenGL\imgui_impl_opengl3_loader.h" />
     <ClInclude Include="res\Platforms\Windows\WindowsWindow.h" />
     <ClInclude Include="res\Window.h" />
     <ClInclude Include="res\Z.h" />
     <ClInclude Include="res\zpch.h" />
+    <ClInclude Include="res\Platforms\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="res\Application.cpp" />
@@ -178,6 +179,7 @@
     <ClCompile Include="res\Layers\LayerStack.cpp" />
     <ClCompile Include="res\Log.cpp" />
     <ClCompile Include="res\Platforms\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="res\Platforms\Windows\WindowsInput.cpp" />
     <ClCompile Include="res\Platforms\Windows\WindowsWindow.cpp" />
     <ClCompile Include="res\zpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

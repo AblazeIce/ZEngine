@@ -2,7 +2,7 @@
 
 #ifdef Z_PLATFORM_WINDOWS
 
-int main(int argc,char** argv) 
+int main(int argc, char** argv)
 {
 	Z::Log::Init();
 	Z_CORE_TRACE("1111");
@@ -16,4 +16,3 @@ int main(int argc,char** argv)
 	delete app;
 }
 #endif // Z_PLATFORM_WINDOWS
-

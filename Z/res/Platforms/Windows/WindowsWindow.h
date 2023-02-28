@@ -4,7 +4,7 @@
 
 namespace Z
 {
-	class WindowsWindow:public Window
+	class WindowsWindow :public Window
 	{
 	public:
 		WindowsWindow(const WindowProps& props);
@@ -19,7 +19,7 @@ namespace Z
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 
-
+		inline void* GetNativeWindow() const override { return m_Window; }
 	private:
 		virtual void Init(const WindowProps& props);
 		virtual void ShutDown();
@@ -36,8 +36,5 @@ namespace Z
 		};
 
 		WindowData m_Data;
-
 	};
-
-	
 }
